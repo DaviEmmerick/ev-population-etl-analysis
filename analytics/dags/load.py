@@ -1,6 +1,6 @@
 import sqlite3
 
-db_path = r"C:/Users/davi emmerick/OneDrive/Área de Trabalho/Data Analytics/database.db"
+db_path = "../../database.db"
 
 def load_data (df, db_path):
     conn = sqlite3.connect(db_path)
