@@ -53,26 +53,6 @@ airflow webserver -p 8080 airflow scheduler
 3. **Carga**: Os dados transformados são carregados em um banco de dados SQL para posterior análise.
 4. **Agendamento e Orquestração**: O pipeline é gerenciado e executado periodicamente pelo Apache Airflow.
 
-# Arquitetura
-
-ev-population-etl/
-├── analytics/
-│   ├── dags/
-│   │   ├── analysis.py
-│   │   ├── extract.py
-│   │   ├── load.py
-│   │   ├── transform.py
-│   │   └── etl_pipeline.py
-│   ├── data/
-│   │   └── Electric_Vehicle_Population_Data.csv
-│   └── pyvenv.cfg
-├── database.db
-├── .gitignore
-├── LICENSE
-├── README.txt
-└── requirements.txt
-
-
 # Contribuições
 
 Contribuições são bem-vindas! Se você tiver uma sugestão de melhoria ou correção, sinta-se à vontade para abrir um pull request. Certifique-se de que seus testes estão passando antes de submeter o PR.
