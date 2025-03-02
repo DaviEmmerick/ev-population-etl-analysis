@@ -1,30 +1,30 @@
 import sqlite3
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+from datetime import datetime
 
-conn = sqlite3.connect("database.db")
+def process_and_update_data(db_path):
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
 
-df = pd.read_sql_query("SELECT * FROM electric_vehicles", conn)
+    cursor.execute("UPDATE eletric_vehicles SET County = 'Desconhecido' WHERE County IS NULL")
+    cursor.execute('UPDATE eletric_vehicles SET [Legislative District] = "Desconhecido" WHERE [Legislative District] IS NULL')
+    conn.commit()
 
-print(df.columns.values)
-conn.close()
-print("\n")
+    df = pd.read_sql_query("SELECT * FROM eletric_vehicles", conn)
+    conn.close()
 
-nullCounts = df.isnull().sum()
-print(nullCounts)
-print("\n")
+    if "Postal Code" in df.columns:
+        df["Postal Code"] = df["Postal Code"].astype(str)
 
-# Análise dos Dados existentes  
+    df["Missing_Count"] = df.isnull().sum(axis=1)
 
-m_counts = df["Make"].value_counts().head()
-plt.figure(figsize=(12, 6))
-sns.barplot(x=m_counts.index, y=m_counts.values,  hue=m_counts.index, palette="viridis", legend=False)
-plt.xlabel("Marca")
-plt.ylabel("Número de Veículos")
-plt.title("Top 10 Marcas de Veículos Elétricos")
-plt.xticks(rotation=45)
-plt.show()
+    state_counts = df.groupby('City').size().reset_index(name='Vehicle_Count')
 
+    current_year = datetime.now().year
+    df["Vehicle_Age"] = current_year - df["Model Year"]
 
+    age_by_city = df.groupby("City")["Vehicle_Age"].mean().round(2).reset_index(name="Avg_Vehicle_Age")
 
+    conn = sqlite3.connect(db_path)
+    df.to_sql('eletric_vehicles', conn, if_exists='replace', index=False)
+    conn.close()
