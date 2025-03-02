@@ -1,5 +1,3 @@
-# ev-population-etl
-This project implements an automated ETL pipeline to process data about electric vehicles. Orchestrated with Apache Airflow, it executes tasks periodically as new data is added, transforming and loading it into a SQL database to ensure efficient updating.
 # EV Population ETL
 
 Este projeto implementa um pipeline ETL automatizado para processar dados sobre veículos elétricos. Orquestrado com Apache Airflow, o pipeline executa tarefas periodicamente à medida que novos dados são adicionados, transformando e carregando-os em um banco de dados SQL para garantir atualizações eficientes.
