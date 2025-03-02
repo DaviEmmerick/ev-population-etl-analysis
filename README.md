@@ -55,21 +55,21 @@ airflow webserver -p 8080 airflow scheduler
 
 # Arquitetura
 
-ev-population-etl/ 
-├── analytics/ 
-│├── dags/ 
-││ ├── analysis.py 
-││ ├── extract.py
-││ ├── load.py 
-││ ├── transform.py 
-││ └── etl_pipeline.py 
-│├── data/ 
-││ └── Electric_Vehicle_Population_Data.csv 
-│└── pyvenv.cfg 
-├── database.db 
-├── .gitignore 
-├── LICENSE 
-├── README.txt 
+ev-population-etl/
+├── analytics/
+│   ├── dags/
+│   │   ├── analysis.py
+│   │   ├── extract.py
+│   │   ├── load.py
+│   │   ├── transform.py
+│   │   └── etl_pipeline.py
+│   ├── data/
+│   │   └── Electric_Vehicle_Population_Data.csv
+│   └── pyvenv.cfg
+├── database.db
+├── .gitignore
+├── LICENSE
+├── README.txt
 └── requirements.txt
 
 
@@ -80,3 +80,7 @@ Contribuições são bem-vindas! Se você tiver uma sugestão de melhoria ou cor
 # Licença
 
 Este projeto está licenciado sob a Licença MIT - consulte o arquivo LICENSE para mais detalhes.
+
+
+
+
